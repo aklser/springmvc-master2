@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<from action=""sayHi" method="post">
+<from action="sayHi" method="post">
 <input type="text" name="name">
 <input type="submit" value="submit">
 </from>
