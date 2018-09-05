@@ -65,7 +65,12 @@
 	    <artifactId>spring-beans</artifactId>
 	    <version>3.2.5.RELEASE</version>
 	</dependency>
-    
+      <dependency>
+          <groupId>org.apache.struts.xwork</groupId>
+          <artifactId>xwork-core</artifactId>
+          <version>2.3.16.2</version>
+      </dependency>
+
   </dependencies>
   <build>
     <finalName>springmvc1</finalName>

@@ -1,12 +1,14 @@
 package cap.controller;
 
+import cap.bean.Admin;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import  javax.servlet.http.HttpServletRequest;
+
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,16 +23,27 @@ public class HelloController {
     }
 
     @RequestMapping(value = "sayHi", method = RequestMethod.POST)
-   public String hello(HttpServletRequest request, Model model, @RequestParam("name") String username){
+    public String hi(HttpServletRequest request, Model model, @RequestParam("name") String username) {
         String nameByRequest =request.getParameter("name");
         model.addAttribute("nameByReuest",nameByRequest);
         model.addAttribute("username",username);
         return  "result";
     }
    @RequestMapping(value = "/sayHi",method = RequestMethod.GET)
-   public String hello(){
+   public String hi(){
         return  "sayHi";
    }
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    public void hello() {
+    }
+
+    @RequestMapping(value = "hello", method = RequestMethod.POST)
+    public ModelAndView hello(Admin admin) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("admin", admin);
+        modelAndView.setViewName("result2");
+        return modelAndView;
+    }
     @RequestMapping("/test2")
     public void test2(Model model) {
         model.addAttribute("data", "SpringMVC Test2");
