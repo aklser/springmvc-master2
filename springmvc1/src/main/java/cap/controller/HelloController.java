@@ -20,31 +20,11 @@ public class HelloController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "sayHi", method = RequestMethod.POST)
-    public String hi(HttpServletRequest request, Model model, @RequestParam("name") String username) {
-        String nameByRequest =request.getParameter("name");
-        model.addAttribute("nameByReuest",nameByRequest);
-        model.addAttribute("username",username);
-        return  "result";
+    @RequestMapping(value = "/test", method = RequestMethod.POST)
+    public String test(Model model) {
+        model.addAttribute("data", "SpringMVC");
+        return "test";
     }
-   @RequestMapping(value = "/sayHi",method = RequestMethod.GET)
-   public String hi(){
-        return  "sayHi";
-   }
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public void hello() {
-    }
-    @RequestMapping(value = "hello", method = RequestMethod.POST)
-    public String hello(@ModelAttribute("admin") Admin admin) {
-        return "result2";
-    }
-   /*@RequestMapping(value = "hello", method = RequestMethod.POST)
-    public ModelAndView hello(Admin admin) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("admin", admin);
-        modelAndView.setViewName("result2");
-        return modelAndView;
-    }*/
 
     @RequestMapping("/test2")
     public void test2(Model model) {
@@ -66,6 +46,37 @@ public class HelloController {
         map.put("key2", "value2");
         return map;
     }
+
+    @RequestMapping(value = "sayHi", method = RequestMethod.POST)
+    public String hi(HttpServletRequest request, Model model, @RequestParam("name") String username) {
+        String nameByRequest = request.getParameter("name");
+        model.addAttribute("nameByReuest", nameByRequest);
+        model.addAttribute("username", username);
+        return "result";
+
+    }
+
+    @RequestMapping(value = "/sayHi", method = RequestMethod.GET)
+    public String hi() {
+        return "sayHi";
+    }
+
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    public void hello() {
+    }
+
+    @RequestMapping(value = "hello", method = RequestMethod.POST)
+    public String hello(@ModelAttribute("admin") Admin admin) {
+        return "result2";
+    }
+    /*
+    @RequestMapping(value = "hello", method = RequestMethod.POST)
+    public String hello(Admin admin,Model model) {
+       model.addAttribute("admin",admin);
+        return "result2";
+    }
+    */
+
     @RequestMapping(value = "hi/{name}", method = RequestMethod.GET)
     public ModelAndView sayHi(@PathVariable("name") String name) {
         ModelAndView modelAndView = new ModelAndView();
@@ -74,4 +85,5 @@ public class HelloController {
         return modelAndView;
 
     }
+
 }

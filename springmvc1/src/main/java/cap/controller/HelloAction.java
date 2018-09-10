@@ -1,8 +1,9 @@
 package cap.controller;
 
 import cap.bean.Admin;
-import org.springframework.stereotype.Controller;
 import com.opensymphony.xwork2.ActionSupport;
+import org.springframework.stereotype.Controller;
+
 @Controller
 public class HelloAction extends ActionSupport {
     private Admin admin;
